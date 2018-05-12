@@ -1,6 +1,6 @@
 # Pontuador de Riscos Financeiros
 
-Arquitetura de um sistema para análise de riscos para operações financeiras com base no perfil de um consumidor.
+Arquitetura de um sistema para análise de riscos de operações financeiras, com base no perfil de um consumidor.
 
 ---
 
@@ -18,13 +18,13 @@ Esse serviço retorna a seguinte estrutura de dados:
 - Nome
 - Endereço
 - Lista de dívidas:
-  - Data de inclusão da divida na lista
+  - Data de inclusão da dívida na lista
   - Valor devido
-  - Entidade que incluiu a divida na lista
+  - Entidade que incluiu a dívida na lista
 
 
 ### __Serviço B__
-O segundo serviço armazena outras informações sobre uma pessoa utilizadas para calcular uma pontuação de risco de crédito, realizando acessos a um banco de dados com alta performance e provendo uma API simples para consulta da pontuação por CPF.
+O segundo serviço armazena outras informações sobre uma pessoa para calcular uma pontuação de risco de crédito, realizando acessos a um banco de dados com alta performance e provendo uma API simples para consulta da pontuação por CPF.
 
 Esse serviço retorna a seguinte estrutura de dados:
 
@@ -67,7 +67,7 @@ Para o usuário final ficará disponível uma aplicação que consome os serviç
 
 > Para executar a aplicação tenha o [Docker](https://www.docker.com/) e o [Docker Compose](https://docs.docker.com/compose/) instalados em seu computador
 
-A aplicação utiliza dados fictícios, simulando um gateway de API para os serviços A, B e C, é possível utilizar serviços reais atualizando as variávies de ambiente, veja abaixo as variáveis de ambiente disponíveis:
+A aplicação utiliza dados fictícios, simulando um gateway de API para os serviços A, B e C, é possível utilizar serviços reais atualizando as variávies de ambiente, veja abaixo as variáveis disponíveis:
 
 
 | __Variável__         | __Descrição__                             |
