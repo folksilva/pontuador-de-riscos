@@ -1,0 +1,12 @@
+{
+    "cpf": "XXXXXXXXXXX",
+    "name": "Han Solo",
+    "address": "A galaxy far away",
+    "debts": [
+        {
+            "date": "1977-11-18",
+            "value": "99999999999999.99",
+            "creditor": "Jabba the Hutt" 
+        }
+    ]
+}

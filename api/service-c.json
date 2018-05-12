@@ -1,0 +1,12 @@
+[
+    {
+        "event_date": "2018-05-10",
+        "event_type": "score_check",
+        "event_entity": "Corporação de Engenharia Corelliana"
+    },
+    {
+        "event_date": "2010-07-15",
+        "event_type": "credit_card",
+        "event_entity": "Canto Bight"
+    }
+]

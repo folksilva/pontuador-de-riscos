@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  
+  api:
+    build: ./api/
+    environment: 
+      SERVER_ADDRESS: '0.0.0.0'
+      SERVER_PORT: 5000
+      DEBUG_MODE: 'true'
+    volumes: 
+      - ./api:/api:z
+    ports:
+      - "5000:5000"
+
+  front:
+    build: ./front/
+    environment: 
+      SERVICE_A_ENDPOINT: 'http://api:5000/servicea/'
+      SERVICE_B_ENDPOINT: 'http://api:5000/serviceb/'
+      SERVICE_C_ENDPOINT: 'http://api:5000/servicec/'
+      USER_DATABASE_URL: 'sqlite:///userdb.sqlite'
+      SERVER_ADDRESS: '0.0.0.0'
+      SERVER_PORT: 8080
+      DEBUG_MODE: 'true'
+    volumes: 
+      - ./front:/front:z
+    ports:
+      - "8080:8080"

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    strong.points {
+        font-size: 3em;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h3>Consulte um CPF</h3>
+        <form class="form-inline" action="{{ url_for('home') }}" method="POST">
+            <input class="form-control mb-2 mr-sm-2" type="text" name="cpf" placeholder="CPF" {% if resultado %}value="{{ resultado.cpf }}"{% endif %}>
+            <button type="submit" class="btn btn-primary">Consultar Pontuação</button>
+        </form>
+    </div>
+</div>
+{% if request.method == 'POST' %}
+<div class="row">
+    <div class="col">
+        <h4>Resultado da consulta:</h4>
+        <p>
+            Pontuação:
+            <strong class="points">
+                {{ resultado.points }}
+                <span class="text-muted">/100</span>
+            </strong>
+        </p>
+        <p>
+            Avaliação: 
+            {% if resultado.points < 30 %}
+            <strong class="text-danger">
+            {% elif resultado.points < 70 %}
+            <strong class="text-warning">
+            {% else %}
+            <strong class="text-info">
+            {% endif %}
+                {{ resultado.description }}
+            </strong>
+        </p>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

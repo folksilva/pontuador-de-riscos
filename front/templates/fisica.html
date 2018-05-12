@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block style %}
+<style>
+    .header h2 {
+        padding: 1em 0 0;
+        font-size: 2em;
+    }
+    .header h2 strong {
+        font-size: 4em;
+    }
+    .header .points-description {
+        font-weight: bold;
+        margin-top: -2em;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col center header">
+        <strong>Bem vindo, {{ servicea.name }}!</strong>
+        <a href="{{ url_for('logout') }}" class="ml-2">Sair</a>
+        <h2>
+            Sua Pontuação: 
+            <strong>
+                {{ serviceb.points }}
+                <span class="text-muted">/100</span>
+            </strong>
+        </h2>
+        {% if serviceb.points < 30 %}
+        <div class="points-description text-danger">
+        {% elif serviceb.points < 70 %}
+        <div class="points-description text-warning">
+        {% else %}
+        <div class="points-description text-info">
+        {% endif %}
+            {{ serviceb.description }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row mp-4">
+    <div class="col">
+        <h2>Suas Dívidas</h2>
+        <ul>
+            {% for debt in servicea.debts %}
+            <li class="mb-3">
+                <h4>R$ {{ debt.value }}</h4>
+                <span>Para <strong>{{ debt.creditor }}</strong>, incluso em {{ debt.date }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if current_user.is_subscriber %}
+    <div class="col">
+        <h2>Seu Histórico</h2>
+        <ul>
+            {% for event in servicec %}
+            <li class="mb-3">
+                <h4>{{ event.event_date }}: {{ event.event_type }}</h4>
+                <strong>
+                    <i class="fas fa-map-marker"></i>
+                    {{ event.event_entity }}
+                </strong>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
